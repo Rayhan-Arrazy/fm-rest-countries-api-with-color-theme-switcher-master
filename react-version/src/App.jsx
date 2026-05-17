@@ -10,13 +10,13 @@ import HomeView from './components/HomeView';
 function normalizeCountryData(country) {
   // 1. Resolve Name
   const name = typeof country.name === 'object' ? country.name.common : country.name;
-  
+
   // 2. Resolve Code (CCA3 / Alpha3)
   const code = country.cca3 || country.alpha3Code || '';
-  
+
   // 3. Resolve Capital
-  const capital = Array.isArray(country.capital) 
-    ? country.capital[0] 
+  const capital = Array.isArray(country.capital)
+    ? country.capital[0]
     : (country.capital || 'N/A');
 
   // 4. Resolve Currencies (standardizing into a simple string list)
@@ -46,7 +46,7 @@ function normalizeCountryData(country) {
     region: country.region || 'N/A',
     subregion: country.subregion || 'N/A',
     population: country.population || 0,
-    nativeName: typeof country.name === 'object' 
+    nativeName: typeof country.name === 'object'
       ? (Object.values(country.name.nativeName || {})[0]?.common || name)
       : (country.nativeName || name),
     tld: country.tld ? country.tld[0] : (country.topLevelDomain ? country.topLevelDomain[0] : 'N/A'),
@@ -61,12 +61,12 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   // Theme State Setup
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) return savedTheme;
-    
+
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     return prefersDark ? 'dark' : 'light';
   });
@@ -82,7 +82,7 @@ function App() {
     const fetchCountriesData = async () => {
       const API_URL = 'https://restcountries.com/v3.1/all';
       const FALLBACK_URL = '/data.json'; // Located in the public folder or root fallback
-      
+
       try {
         setLoading(true);
         const response = await fetch(API_URL);
@@ -123,9 +123,9 @@ function App() {
             <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
               <h1 className="header__title">Where in the world?</h1>
             </Link>
-            <button 
-              className="theme-toggle" 
-              onClick={toggleTheme} 
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
               aria-label="Toggle dark mode"
             >
               <i className={theme === 'dark' ? 'fa-solid fa-moon' : 'fa-regular fa-moon'}></i>
@@ -147,20 +147,20 @@ function App() {
           ) : (
             <Routes>
               {/* Homepage List View Route */}
-              <Route 
-                path="/" 
-                element={<HomeView countries={countries} />} 
+              <Route
+                path="/"
+                element={<HomeView countries={countries} />}
               />
-              
+
               {/* Detail Page Route */}
-              <Route 
-                path="/country/:code" 
+              <Route
+                path="/country/:code"
                 element={
                   <div style={{ textAlign: 'center', padding: '24px 0' }}>
                     <h2>Country Details Page View</h2>
                     <p>Implement your detail view based on URL params.</p>
                   </div>
-                } 
+                }
               />
             </Routes>
           )}

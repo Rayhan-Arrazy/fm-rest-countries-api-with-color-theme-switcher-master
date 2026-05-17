@@ -7,19 +7,25 @@
    ========================================================================== */
 :root {
   /* Color Palette (from style-guide.md) */
-  --color-blue-900: hsl(209, 23%, 22%); /* Dark Mode Elements */
-  --color-blue-950: hsl(207, 26%, 17%); /* Dark Mode Background */
-  --color-grey-950: hsl(200, 15%, 8%);  /* Light Mode Text */
-  --color-grey-400: hsl(0, 0%, 50%);   /* Light Mode Input */
-  --color-grey-50: hsl(0, 0%, 99%);    /* Light Mode Background */
-  --color-white: hsl(0, 0%, 100%);     /* Dark Mode Text & Light Mode Elements */
+  --color-blue-900: hsl(209, 23%, 22%);
+  /* Dark Mode Elements */
+  --color-blue-950: hsl(207, 26%, 17%);
+  /* Dark Mode Background */
+  --color-grey-950: hsl(200, 15%, 8%);
+  /* Light Mode Text */
+  --color-grey-400: hsl(0, 0%, 50%);
+  /* Light Mode Input */
+  --color-grey-50: hsl(0, 0%, 99%);
+  /* Light Mode Background */
+  --color-white: hsl(0, 0%, 100%);
+  /* Dark Mode Text & Light Mode Elements */
 
   /* Light Theme Mapping (Default) */
   --bg-color: var(--color-grey-50);
   --el-color: var(--color-white);
   --text-color: var(--color-grey-950);
   --input-color: var(--color-grey-400);
-  
+
   /* Shadow variables for standard cards and elements */
   --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   --transition-speed: 0.3s;
@@ -36,7 +42,9 @@
 
 /* 2. CSS Reset (Modern Best Practices)
    ========================================================================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -45,13 +53,15 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px; /* Homepage items size */
+  font-size: 14px;
+  /* Homepage items size */
   font-weight: 300;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -60,12 +70,19 @@ body {
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
   color: inherit;
   background: none;

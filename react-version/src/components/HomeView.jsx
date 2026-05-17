@@ -38,10 +38,10 @@ function HomeView({ countries }) {
         {/* Search Input Container */}
         <div className="search-container">
           <i className="fa-solid fa-magnifying-glass"></i>
-          <input 
-            type="text" 
-            className="search-input" 
-            placeholder="Search for a country..." 
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search for a country..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             autoComplete="off"
@@ -50,16 +50,16 @@ function HomeView({ countries }) {
 
         {/* Custom styled Region Dropdown Container */}
         <div className="filter-container" onBlur={handleDropdownBlur}>
-          <button 
-            className="filter-btn" 
+          <button
+            className="filter-btn"
             onClick={toggleDropdown}
-            aria-haspopup="listbox" 
+            aria-haspopup="listbox"
             aria-expanded={dropdownOpen}
           >
             <span>{selectedRegion ? selectedRegion : 'Filter by Region'}</span>
             <i className="fa-solid fa-chevron-down"></i>
           </button>
-          
+
           <ul className={`filter-options ${dropdownOpen ? 'show' : ''}`} role="listbox">
             <li className="filter-option" onClick={() => selectRegion('')} role="option">All Regions</li>
             <li className="filter-option" onClick={() => selectRegion('Africa')} role="option">Africa</li>
@@ -79,10 +79,10 @@ function HomeView({ countries }) {
           </div>
         ) : (
           filteredCountries.map(country => (
-            <div 
-              key={country.code} 
-              className="card" 
-              role="link" 
+            <div
+              key={country.code}
+              className="card"
+              role="link"
               tabIndex={0}
               onClick={() => navigate(`/country/${country.code}`)}
               onKeyDown={(e) => {
