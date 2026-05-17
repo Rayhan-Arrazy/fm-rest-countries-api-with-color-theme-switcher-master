@@ -96,7 +96,7 @@ function App() {
         try {
           // Attempt loading from local public/data.json
           const response = await fetch(FALLBACK_URL);
-          if (!response.ok) throw new Error('Fallback failed');
+          if (!response.ok) throw new Error('Fallback failed', { cause: err });
           const data = await response.json();
           setCountries(data.map(normalizeCountryData));
           setLoading(false);

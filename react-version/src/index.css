@@ -60,7 +60,7 @@ body {
 
 body {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   /* Homepage items size */
   font-weight: 300;
   background-color: var(--bg-color);
@@ -69,6 +69,7 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
+
 
 img,
 picture,
@@ -88,6 +89,19 @@ select {
   background: none;
   border: none;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
 
 /* 3. Base Layout Container
    ========================================================================== */
@@ -117,16 +131,17 @@ select {
 }
 
 .header__title {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 800;
   cursor: pointer;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .header__title {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 }
+
 
 .theme-toggle {
   display: flex;
@@ -153,13 +168,14 @@ select {
   margin: 48px 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .controls-row {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 }
+
 
 /* Search Input Container */
 .search-container {
@@ -178,17 +194,18 @@ select {
   top: 50%;
   transform: translateY(-50%);
   color: var(--input-color);
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .search-input {
   width: 100%;
   padding: 16px 16px 16px 74px;
-  font-size: 14px;
+  font-size: 0.875rem;
   background: transparent;
   border-radius: 6px;
   outline: none;
 }
+
 
 .search-input::placeholder {
   color: var(--input-color);
@@ -204,7 +221,7 @@ select {
 .filter-btn {
   width: 100%;
   padding: 16px 24px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   background-color: var(--el-color);
   color: var(--text-color);
@@ -237,11 +254,12 @@ select {
 
 .filter-option {
   padding: 10px 24px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
+
 
 .filter-option:hover {
   background-color: rgba(0, 0, 0, 0.05);
@@ -261,11 +279,12 @@ select {
   margin-bottom: 60px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .countries-grid {
     gap: 74px;
   }
 }
+
 
 /* Individual Card Styling */
 .card {
@@ -311,7 +330,7 @@ select {
 }
 
 .card__name {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 800;
   margin-bottom: 4px;
   white-space: nowrap;
@@ -327,13 +346,14 @@ select {
 }
 
 .card__details li {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 300;
 }
 
 .card__details strong {
   font-weight: 600;
 }
+
 
 /* ==========================================================================
    7. Country Details Page View Layout
@@ -343,9 +363,10 @@ select {
   align-items: center;
   gap: 10px;
   padding: 10px 32px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 300;
   background-color: var(--el-color);
+
   color: var(--text-color);
   box-shadow: var(--box-shadow);
   border-radius: 6px;
@@ -366,18 +387,19 @@ select {
   align-items: center;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .detail-container {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 60px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .detail-container {
     gap: 120px;
   }
 }
+
 
 .detail__flag-wrapper {
   width: 100%;
@@ -399,22 +421,23 @@ select {
   gap: 24px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .detail__content {
     gap: 32px;
   }
 }
 
 .detail__title {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 800;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .detail__title {
-    font-size: 32px;
+    font-size: 2rem;
   }
 }
+
 
 .detail__stats-row {
   display: grid;
@@ -422,12 +445,13 @@ select {
   gap: 32px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 37.5em) {
   .detail__stats-row {
     grid-template-columns: 1fr 1fr;
     gap: 48px;
   }
 }
+
 
 .detail__stats-col {
   list-style: none;
@@ -439,9 +463,10 @@ select {
 }
 
 .detail__stats-col li {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 300;
 }
+
 
 .detail__stats-col strong {
   font-weight: 600;
@@ -455,7 +480,7 @@ select {
   margin-top: 24px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .detail__borders-section {
     flex-direction: row;
     align-items: center;
@@ -465,12 +490,14 @@ select {
   }
 }
 
+
 .detail__borders-title {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   white-space: nowrap;
   margin: 0;
 }
+
 
 .detail__borders-list {
   display: flex;
@@ -484,9 +511,10 @@ select {
 .border-badge {
   display: inline-block;
   padding: 6px 20px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 300;
   background-color: var(--el-color);
+
   color: var(--text-color);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;

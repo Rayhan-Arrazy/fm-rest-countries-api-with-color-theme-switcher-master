@@ -17,7 +17,7 @@ function HomeView({ countries }) {
   };
 
   // Close dropdown on click outside can be added via hook, but standard toggle is already robust
-  const handleDropdownBlur = (e) => {
+  const handleDropdownBlur = () => {
     // Timeout allows option click event to fire before dropdown closes
     setTimeout(() => {
       setDropdownOpen(false);
