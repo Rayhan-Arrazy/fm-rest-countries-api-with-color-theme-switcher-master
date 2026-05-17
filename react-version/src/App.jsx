@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import HomeView from './components/HomeView';
+import DetailView from './components/DetailView';
 
 /**
  * Normalizes country data from both REST Countries API v3.1 and local data.json (v2)
@@ -155,12 +156,7 @@ function App() {
               {/* Detail Page Route */}
               <Route
                 path="/country/:code"
-                element={
-                  <div style={{ textAlign: 'center', padding: '24px 0' }}>
-                    <h2>Country Details Page View</h2>
-                    <p>Implement your detail view based on URL params.</p>
-                  </div>
-                }
+                element={<DetailView countries={countries} />}
               />
             </Routes>
           )}
