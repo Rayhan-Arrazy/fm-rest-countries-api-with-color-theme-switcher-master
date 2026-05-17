@@ -94,7 +94,7 @@ function HomeView({ countries }) {
               </div>
               <div className="card__info">
                 <h2 className="card__name">{country.name}</h2>
-                <ul class="card__details">
+                <ul className="card__details">
                   <li><strong>Population:</strong> {country.population.toLocaleString()}</li>
                   <li><strong>Region:</strong> {country.region}</li>
                   <li><strong>Capital:</strong> {country.capital}</li>
