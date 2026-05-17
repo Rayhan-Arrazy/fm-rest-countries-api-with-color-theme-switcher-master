@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="../design/favicon-32x32.png">
+
+  <title>REST Countries API with Color Theme Switcher | Vanilla Version</title>
+
+  <!-- Google Fonts - Nunito Sans (Weights 300, 600, 800) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Our Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container header__content">
+      <h1 class="header__title" id="logo-btn">Where in the world?</h1>
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+        <i class="fa-regular fa-moon" id="theme-icon"></i>
+        <span id="theme-text">Dark Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content View -->
+  <main class="container" id="main-view">
+    <!-- This container will hold our dynamic sub-views: the homepage list view or the detail page view -->
+    <div id="content-container">
+      <!-- Dynamic content will be injected here by app.js -->
+      <div style="padding: 40px; text-align:center; font-size: 24px">
+        <p>Loading countries data...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Our Script -->
+  <script src="app.js"></script>
+</body>
+
+</html>

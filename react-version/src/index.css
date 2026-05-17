@@ -1,0 +1,127 @@
+/* ==========================================================================
+   DESIGN SYSTEM & CSS RESET
+   Challenge: REST Countries API with color theme switcher (React Version)
+   ========================================================================== */
+
+/* 1. Theme Variable Definitions
+   ========================================================================== */
+:root {
+  /* Color Palette (from style-guide.md) */
+  --color-blue-900: hsl(209, 23%, 22%); /* Dark Mode Elements */
+  --color-blue-950: hsl(207, 26%, 17%); /* Dark Mode Background */
+  --color-grey-950: hsl(200, 15%, 8%);  /* Light Mode Text */
+  --color-grey-400: hsl(0, 0%, 50%);   /* Light Mode Input */
+  --color-grey-50: hsl(0, 0%, 99%);    /* Light Mode Background */
+  --color-white: hsl(0, 0%, 100%);     /* Dark Mode Text & Light Mode Elements */
+
+  /* Light Theme Mapping (Default) */
+  --bg-color: var(--color-grey-50);
+  --el-color: var(--color-white);
+  --text-color: var(--color-grey-950);
+  --input-color: var(--color-grey-400);
+  
+  /* Shadow variables for standard cards and elements */
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --transition-speed: 0.3s;
+}
+
+/* Dark Theme Mapping */
+[data-theme="dark"] {
+  --bg-color: var(--color-blue-950);
+  --el-color: var(--color-blue-900);
+  --text-color: var(--color-white);
+  --input-color: var(--color-white);
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 2. CSS Reset (Modern Best Practices)
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px; /* Homepage items size */
+  font-weight: 300;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+/* 3. Base Layout Container
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 4. Common Layout Classes
+   ========================================================================== */
+.header {
+  background-color: var(--el-color);
+  box-shadow: var(--box-shadow);
+  padding: 24px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .header__title {
+    font-size: 24px;
+  }
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px dashed var(--text-color);
+  outline-offset: 4px;
+}
