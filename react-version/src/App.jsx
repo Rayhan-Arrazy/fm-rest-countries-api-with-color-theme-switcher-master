@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import HomeView from './components/HomeView';
 
 /**
  * Normalizes country data from both REST Countries API v3.1 and local data.json (v2)
@@ -148,13 +149,7 @@ function App() {
               {/* Homepage List View Route */}
               <Route 
                 path="/" 
-                element={
-                  <div style={{ textAlign: 'center', padding: '24px 0' }}>
-                    <h2>React Version Loaded!</h2>
-                    <p>Total Countries loaded: {countries.length}</p>
-                    <p>Build your homepage components (Search, Filter, Country Cards Grid) in App.jsx or subcomponents.</p>
-                  </div>
-                } 
+                element={<HomeView countries={countries} />} 
               />
               
               {/* Detail Page Route */}
