@@ -109,7 +109,7 @@ function normalizeCountryData(country) {
 }
 
 async function fetchCountries() {
-  const API_URL = 'https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital';
+  const API_URL = 'https://restcountries.com/v3.1/all';
   const FALLBACK_URL = '../data.json'; // Local backup if the API goes down
 
   try {
@@ -282,8 +282,93 @@ function filterAndRenderCards() {
 }
 
 function renderDetailPage(countryCode) {
-  // TODO: Build the detail page layout, resolving border country codes dynamically.
+  const country = countries.find(c => c.code.toUpperCase() === countryCode.toUpperCase());
+
+  if (!country) {
+    contentContainer.innerHTML = `
+      <button class="back-btn" id="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </button>
+      <div style="text-align: center; padding: 48px 0; font-size: 18px; opacity: 0.8;">
+        <h2>Country not found (${countryCode})</h2>
+      </div>
+    `;
+    document.getElementById('back-btn').addEventListener('click', renderHomepage);
+    return;
+  }
+
+  // Helper resolver for border common names
+  const getCountryNameByCode = (borderCode) => {
+    const found = countries.find(c => c.code.toUpperCase() === borderCode.toUpperCase());
+    return found ? found.name : borderCode;
+  };
+
+  // Render detail columns structure
+  contentContainer.innerHTML = `
+    <button class="back-btn" id="back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+
+    <div class="detail-container">
+      <!-- Flag Column -->
+      <div class="detail__flag-wrapper">
+        <img class="detail__flag" src="${country.flag}" alt="Flag of ${country.name}" />
+      </div>
+
+      <!-- Stats Columns Content -->
+      <div class="detail__content">
+        <h2 class="detail__title">${country.name}</h2>
+
+        <div class="detail__stats-row">
+          <!-- Column 1 -->
+          <ul class="detail__stats-col">
+            <li><strong>Native Name:</strong> ${country.nativeName}</li>
+            <li><strong>Population:</strong> ${country.population.toLocaleString()}</li>
+            <li><strong>Region:</strong> ${country.region}</li>
+            <li><strong>Sub Region:</strong> ${country.subregion}</li>
+            <li><strong>Capital:</strong> ${country.capital}</li>
+          </ul>
+
+          <!-- Column 2 -->
+          <ul class="detail__stats-col">
+            <li><strong>Top Level Domain:</strong> ${country.tld}</li>
+            <li><strong>Currencies:</strong> ${country.currencies}</li>
+            <li><strong>Languages:</strong> ${country.languages}</li>
+          </ul>
+        </div>
+
+        <!-- Border Countries Row -->
+        <div class="detail__borders-section">
+          <h3 class="detail__borders-title">Border Countries:</h3>
+          ${country.borders && country.borders.length > 0 ? `
+            <ul class="detail__borders-list">
+              ${country.borders.map(borderCode => `
+                <li>
+                  <button class="border-badge border-link-btn" data-code="${borderCode}">
+                    ${getCountryNameByCode(borderCode)}
+                  </button>
+                </li>
+              `).join('')}
+            </ul>
+          ` : `
+            <span style="font-size: 16px; opacity: 0.6; margin-top: 6px;">None</span>
+          `}
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Attach back button navigation
+  document.getElementById('back-btn').addEventListener('click', renderHomepage);
+
+  // Attach border link buttons listeners (dynamic details swapping!)
+  document.querySelectorAll('.border-link-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      renderDetailPage(btn.dataset.code);
+    });
+  });
 }
+
 
 // Initial Navigation State
 logoBtn.addEventListener('click', () => {
