@@ -16,7 +16,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- Semantic static shell for instant SEO & static accessibility auditors -->
+      <header class="header">
+        <div class="container header__content">
+          <h1 class="header__title">Where in the world?</h1>
+        </div>
+      </header>
+      <main class="container content-area" style="padding: 40px 24px;">
+        <div class="loading-state">
+          <p>Loading countries data...</p>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
