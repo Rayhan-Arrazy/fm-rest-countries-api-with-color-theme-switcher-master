@@ -91,7 +91,7 @@ function HomeView({ countries }) {
               }}
             >
               <div className="card__flag-wrapper">
-                <img className="card__flag" src={country.flag} alt={`${country.name} Flag`} loading="lazy" />
+                <img className="card__flag" src={country.flag} alt={`${country.name} Flag`} />
               </div>
               <div className="card__info">
                 <h2 className="card__name">{country.name}</h2>

@@ -58,7 +58,7 @@
         @keydown.enter="goToDetail(country.code)"
       >
         <div class="card__flag-wrapper">
-          <img class="card__flag" :src="country.flag" :alt="country.name + ' Flag'" loading="lazy" />
+          <img class="card__flag" :src="country.flag" :alt="country.name + ' Flag'" />
         </div>
         <div class="card__info">
           <h2 class="card__name">{{ country.name }}</h2>
