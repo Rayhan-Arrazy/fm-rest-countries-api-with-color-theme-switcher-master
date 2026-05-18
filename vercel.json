@@ -1,7 +1,0 @@
-{
-  "toolbar": false,
-  "buildCommand": "cd react-version && npm install && npm run build",
-  "outputDirectory": "react-version/dist",
-  "installCommand": "cd react-version && npm install",
-  "framework": "vite"
-}
