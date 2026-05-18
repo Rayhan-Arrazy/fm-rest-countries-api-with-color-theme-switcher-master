@@ -9,24 +9,28 @@ import DetailView from './components/DetailView';
  * into a single unified schema for frontend components.
  */
 function normalizeCountryData(country) {
+  if (!country) return null;
+
   // 1. Resolve Name
-  const name = typeof country.name === 'object' ? country.name.common : country.name;
+  const name = typeof country.name === 'object' && country.name !== null
+    ? (country.name.common || country.name.official || 'Unknown')
+    : (country.name || 'Unknown');
 
   // 2. Resolve Code (CCA3 / Alpha3)
-  const code = country.cca3 || country.alpha3Code || '';
+  const code = String(country.cca3 || country.alpha3Code || country.cioc || '').toUpperCase();
 
   // 3. Resolve Capital
   const capital = Array.isArray(country.capital)
-    ? country.capital[0]
+    ? (country.capital[0] || 'N/A')
     : (country.capital || 'N/A');
 
   // 4. Resolve Currencies (standardizing into a simple string list)
   let currencies = [];
   if (country.currencies) {
     if (Array.isArray(country.currencies)) {
-      currencies = country.currencies.map(c => c.name);
+      currencies = country.currencies.filter(Boolean).map(c => c.name || '');
     } else {
-      currencies = Object.values(country.currencies).map(c => c.name);
+      currencies = Object.values(country.currencies).filter(Boolean).map(c => c.name || '');
     }
   }
 
@@ -34,10 +38,21 @@ function normalizeCountryData(country) {
   let languages = [];
   if (country.languages) {
     if (Array.isArray(country.languages)) {
-      languages = country.languages.map(l => l.name);
+      languages = country.languages.filter(Boolean).map(l => l.name || '');
     } else {
-      languages = Object.values(country.languages);
+      languages = Object.values(country.languages).filter(Boolean).map(l => typeof l === 'object' && l !== null ? l.name : l);
     }
+  }
+
+  // 6. Resolve Borders
+  const borders = Array.isArray(country.borders) ? country.borders : [];
+
+  // 7. Resolve Top Level Domain (TLD)
+  let tld = 'N/A';
+  if (Array.isArray(country.tld) && country.tld.length > 0 && country.tld[0]) {
+    tld = country.tld[0];
+  } else if (Array.isArray(country.topLevelDomain) && country.topLevelDomain.length > 0 && country.topLevelDomain[0]) {
+    tld = country.topLevelDomain[0];
   }
 
   return {
@@ -47,16 +62,17 @@ function normalizeCountryData(country) {
     region: country.region || 'N/A',
     subregion: country.subregion || 'N/A',
     population: country.population || 0,
-    nativeName: typeof country.name === 'object'
+    nativeName: typeof country.name === 'object' && country.name !== null
       ? (Object.values(country.name.nativeName || {})[0]?.common || name)
       : (country.nativeName || name),
-    tld: country.tld ? country.tld[0] : (country.topLevelDomain ? country.topLevelDomain[0] : 'N/A'),
-    flag: country.flags?.svg || country.flags?.png || '',
-    borders: country.borders || [],
-    currencies: currencies.join(', ') || 'N/A',
-    languages: languages.join(', ') || 'N/A'
+    tld,
+    flag: country.flags?.svg || country.flags?.png || country.flag || '',
+    borders,
+    currencies: currencies.filter(Boolean).join(', ') || 'N/A',
+    languages: languages.filter(Boolean).join(', ') || 'N/A'
   };
 }
+
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -89,7 +105,7 @@ function App() {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
-        setCountries(data.map(normalizeCountryData));
+        setCountries(data.map(normalizeCountryData).filter(Boolean));
         setLoading(false);
       } catch (err) {
         console.warn('REST Countries API failed, attempting fallback to data.json', err);
@@ -98,7 +114,7 @@ function App() {
           const response = await fetch(FALLBACK_URL);
           if (!response.ok) throw new Error('Fallback failed', { cause: err });
           const data = await response.json();
-          setCountries(data.map(normalizeCountryData));
+          setCountries(data.map(normalizeCountryData).filter(Boolean));
           setLoading(false);
         } catch (fallbackErr) {
           console.error('All data sources failed:', fallbackErr);
