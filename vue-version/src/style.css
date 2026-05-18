@@ -28,6 +28,7 @@
   --badge-shadow: 0 0 clamp(0.125rem, 0.25vw, 0.25rem) rgba(0, 0, 0, 0.1);
   --badge-shadow-hover: 0 clamp(0.0625rem, 0.125vw, 0.125rem) clamp(0.25rem, 0.5vw, 0.5rem) rgba(0, 0, 0, 0.15);
   --transition-speed: 0.3s;
+  --color-error: hsl(0, 84%, 60%);
 
   /* Fluid spacing scale */
   --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
@@ -144,7 +145,7 @@ select {
 }
 
 .error-state {
-  color: hsl(0, 84%, 60%);
+  color: var(--color-error);
 }
 
 /* 4. Header Styles

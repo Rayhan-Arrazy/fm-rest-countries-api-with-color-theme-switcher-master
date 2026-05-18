@@ -1,38 +1,36 @@
 <template>
-  <div class="app-wrapper">
-    <!-- Sticky Header -->
-    <header class="header">
-      <div class="container header__content">
-        <router-link to="/" class="header__logo-link">
-          <h1 class="header__title">Where in the world?</h1>
-        </router-link>
-        <button 
-          class="theme-toggle" 
-          @click="toggleTheme" 
-          aria-label="Toggle dark mode"
-        >
-          <i :class="theme === 'dark' ? 'fa-solid fa-moon' : 'fa-regular fa-moon'"></i>
-          <span>{{ theme === 'dark' ? 'Light Mode' : 'Dark Mode' }}</span>
-        </button>
-      </div>
-    </header>
+  <!-- Sticky Header -->
+  <header class="header">
+    <div class="container header__content">
+      <router-link to="/" class="header__logo-link">
+        <h1 class="header__title">Where in the world?</h1>
+      </router-link>
+      <button 
+        class="theme-toggle" 
+        @click="toggleTheme" 
+        aria-label="Toggle dark mode"
+      >
+        <i :class="theme === 'dark' ? 'fa-solid fa-moon' : 'fa-regular fa-moon'"></i>
+        <span>{{ theme === 'dark' ? 'Light Mode' : 'Dark Mode' }}</span>
+      </button>
+    </div>
+  </header>
 
-    <!-- Main Content View -->
-    <main class="container content-area">
-      <div v-if="loading" class="loading-state">
-        <p>Loading countries data...</p>
-      </div>
-      
-      <div v-else-if="error" class="error-state">
-        <p>{{ error }}</p>
-      </div>
-      
-      <div v-else>
-        <!-- Vue Router Viewport -->
-        <router-view></router-view>
-      </div>
-    </main>
-  </div>
+  <!-- Main Content View -->
+  <main class="container content-area">
+    <div v-if="loading" class="loading-state">
+      <p>Loading countries data...</p>
+    </div>
+    
+    <div v-else-if="error" class="error-state">
+      <p>{{ error }}</p>
+    </div>
+    
+    <div v-else>
+      <!-- Vue Router Viewport -->
+      <router-view></router-view>
+    </div>
+  </main>
 </template>
 
 <script setup>
