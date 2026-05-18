@@ -155,15 +155,9 @@ select {
 }
 
 .header__title {
-  font-size: 1.125rem;
+  font-size: clamp(1.125rem, 4vw, 1.5rem);
   font-weight: 800;
   cursor: pointer;
-}
-
-@media (min-width: 48em) {
-  .header__title {
-    font-size: 1.5rem;
-  }
 }
 
 
