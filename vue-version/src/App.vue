@@ -6,6 +6,7 @@
         <h1 class="header__title">Where in the world?</h1>
       </router-link>
       <button 
+        type="button"
         class="theme-toggle" 
         @click="toggleTheme" 
         aria-label="Toggle dark mode"

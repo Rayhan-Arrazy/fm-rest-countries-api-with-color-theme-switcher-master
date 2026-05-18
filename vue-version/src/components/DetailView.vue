@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Back Button -->
-    <button class="back-btn" @click="goBack">
+    <button type="button" class="back-btn" @click="goBack">
       <i class="fa-solid fa-arrow-left"></i> Back
     </button>
 

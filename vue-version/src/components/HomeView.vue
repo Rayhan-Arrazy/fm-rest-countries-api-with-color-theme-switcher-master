@@ -17,6 +17,7 @@
       <!-- Custom styled Region Dropdown Container -->
       <div class="filter-container" @focusout="handleBlur">
         <button 
+          type="button"
           class="filter-btn" 
           @click="toggleDropdown"
           aria-haspopup="listbox" 

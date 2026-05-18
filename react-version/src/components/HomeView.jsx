@@ -51,6 +51,7 @@ function HomeView({ countries }) {
         {/* Custom styled Region Dropdown Container */}
         <div className="filter-container" onBlur={handleDropdownBlur}>
           <button
+            type="button"
             className="filter-btn"
             onClick={toggleDropdown}
             aria-haspopup="listbox"

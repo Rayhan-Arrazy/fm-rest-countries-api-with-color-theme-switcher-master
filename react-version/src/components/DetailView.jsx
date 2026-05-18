@@ -39,7 +39,7 @@ function DetailView({ countries }) {
   return (
     <div>
       {/* Back Button */}
-      <button className="back-btn" onClick={() => navigate(-1)}>
+      <button type="button" className="back-btn" onClick={() => navigate(-1)}>
         <i className="fa-solid fa-arrow-left"></i> Back
       </button>
 
