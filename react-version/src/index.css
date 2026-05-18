@@ -6,7 +6,6 @@
 /* 1. Theme Variable Definitions
    ========================================================================== */
 :root {
-  /* Color Palette (from style-guide.md) */
   --color-blue-900: hsl(209, 23%, 22%);
   --color-blue-950: hsl(207, 26%, 17%);
   --color-grey-950: hsl(200, 15%, 8%);
@@ -15,14 +14,12 @@
   --color-white: hsl(0, 0%, 100%);
   --color-red: hsl(0, 84%, 60%);
 
-  /* Light Theme Mapping (Default) */
   --bg-color: var(--color-grey-50);
   --el-color: var(--color-white);
   --text-color: var(--color-grey-950);
   --input-color: var(--color-grey-400);
   --color-error: var(--color-red);
 
-  /* Shadows and transitions */
   --box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
   --box-shadow-hover: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.12);
   --hover-bg: rgba(0, 0, 0, 0.05);
@@ -32,7 +29,6 @@
   --transition-speed: 0.3s;
 }
 
-/* Dark Theme Mapping */
 [data-theme="dark"] {
   --bg-color: var(--color-blue-950);
   --el-color: var(--color-blue-900);
@@ -154,7 +150,7 @@ select {
 .theme-toggle {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: clamp(0.25rem, 1vw, 0.5rem);
   font-weight: 600;
   cursor: pointer;
   background: transparent;
@@ -171,7 +167,7 @@ select {
 .controls-row {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
   margin-block: clamp(2rem, 5vh, 3rem);
 }
 
@@ -196,7 +192,7 @@ select {
 
 .search-container i {
   position: absolute;
-  inset-inline-start: 2rem;
+  inset-inline-start: clamp(1.5rem, 3vw, 2rem);
   top: 50%;
   transform: translateY(-50%);
   color: var(--input-color);
@@ -206,7 +202,7 @@ select {
 .search-input {
   width: 100%;
   padding-block: clamp(0.75rem, 2vh, 1rem);
-  padding-inline-start: calc(4.625rem);
+  padding-inline-start: clamp(3.5rem, 7vw, 4.625rem);
   padding-inline-end: clamp(0.75rem, 2vw, 1rem);
   font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
   background: transparent;
@@ -222,14 +218,14 @@ select {
 /* Filter Dropdown */
 .filter-container {
   position: relative;
-  width: 12.5rem;
+  width: clamp(10rem, 20vw, 12.5rem);
 }
 
 .filter-btn {
   width: 100%;
-  padding-block: 1rem;
-  padding-inline: 1.5rem;
-  font-size: 0.875rem;
+  padding-block: clamp(0.75rem, 2vh, 1rem);
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   font-weight: 600;
   background-color: var(--el-color);
   color: var(--text-color);
@@ -252,7 +248,7 @@ select {
   border-radius: 0.375rem;
   list-style: none;
   z-index: 10;
-  padding-block: 0.5rem;
+  padding-block: clamp(0.25rem, 1vh, 0.5rem);
   padding-inline: 0;
   display: none;
 }
@@ -262,9 +258,9 @@ select {
 }
 
 .filter-option {
-  padding-block: 0.625rem;
-  padding-inline: 1.5rem;
-  font-size: 0.875rem;
+  padding-block: clamp(0.5rem, 1.5vh, 0.625rem);
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.15s ease;
@@ -279,8 +275,8 @@ select {
 .countries-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16.25rem, 1fr));
-  gap: clamp(2.5rem, 5vw, 4.625rem);
-  margin-block-end: 3.75rem;
+  gap: clamp(2rem, 5vw, 4.625rem);
+  margin-block-end: clamp(2rem, 6vh, 3.75rem);
 }
 
 .card {
@@ -315,18 +311,18 @@ select {
 }
 
 .card__info {
-  padding-block: 1.75rem;
-  padding-inline: 1.5rem 1.5rem;
-  padding-block-end: 2.5rem;
+  padding-block: clamp(1.25rem, 3vh, 1.75rem);
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
+  padding-block-end: clamp(1.5rem, 4vh, 2.5rem);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: clamp(0.75rem, 2vh, 1rem);
 }
 
 .card__name {
-  font-size: 1.125rem;
+  font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 800;
-  margin-block-end: 0.25rem;
+  margin-block-end: clamp(0.125rem, 0.5vh, 0.25rem);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -336,11 +332,11 @@ select {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: clamp(0.25rem, 1vh, 0.5rem);
 }
 
 .card__details li {
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   font-weight: 300;
 }
 
@@ -353,10 +349,10 @@ select {
 .back-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
-  padding-block: 0.625rem;
-  padding-inline: 2rem;
-  font-size: 0.875rem;
+  gap: clamp(0.375rem, 1vw, 0.625rem);
+  padding-block: clamp(0.5rem, 1.5vh, 0.625rem);
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   font-weight: 300;
   background-color: var(--el-color);
   color: var(--text-color);
@@ -364,7 +360,7 @@ select {
   border-radius: 0.375rem;
   cursor: pointer;
   text-decoration: none;
-  margin-block-end: 4rem;
+  margin-block-end: clamp(2rem, 6vh, 4rem);
   transition: transform 0.2s ease, background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
@@ -375,20 +371,20 @@ select {
 .detail-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: clamp(2rem, 6vw, 4rem);
   align-items: center;
 }
 
 @media (min-width: 64em) {
   .detail-container {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 3.75rem;
+    gap: clamp(2rem, 5vw, 3.75rem);
   }
 }
 
 @media (min-width: 75em) {
   .detail-container {
-    gap: 7.5rem;
+    gap: clamp(3rem, 8vw, 7.5rem);
   }
 }
 
@@ -409,36 +405,36 @@ select {
 .detail__content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: clamp(1rem, 3vh, 1.5rem);
 }
 
 @media (min-width: 48em) {
   .detail__content {
-    gap: 2rem;
+    gap: clamp(1.25rem, 4vh, 2rem);
   }
 }
 
 .detail__title {
-  font-size: 1.375rem;
+  font-size: clamp(1.25rem, 3vw, 1.375rem);
   font-weight: 800;
 }
 
 @media (min-width: 48em) {
   .detail__title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
   }
 }
 
 .detail__stats-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: clamp(1rem, 3vh, 2rem);
 }
 
 @media (min-width: 37.5em) {
   .detail__stats-row {
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: clamp(1.5rem, 4vw, 3rem);
   }
 }
 
@@ -446,13 +442,13 @@ select {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: clamp(0.5rem, 1.5vh, 0.75rem);
   padding: 0;
   margin: 0;
 }
 
 .detail__stats-col li {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
   font-weight: 300;
 }
 
@@ -464,8 +460,8 @@ select {
 .detail__borders-section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-block-start: 1.5rem;
+  gap: clamp(0.75rem, 2vh, 1rem);
+  margin-block-start: clamp(1rem, 3vh, 1.5rem);
 }
 
 @media (min-width: 64em) {
@@ -473,13 +469,13 @@ select {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-block-start: 2.5rem;
+    gap: clamp(0.75rem, 2vw, 1rem);
+    margin-block-start: clamp(1.5rem, 4vh, 2.5rem);
   }
 }
 
 .detail__borders-title {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
   font-weight: 600;
   white-space: nowrap;
   margin: 0;
@@ -488,7 +484,7 @@ select {
 .detail__borders-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.625rem;
+  gap: clamp(0.375rem, 1.5vw, 0.625rem);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -496,9 +492,9 @@ select {
 
 .border-badge {
   display: inline-block;
-  padding-block: 0.375rem;
-  padding-inline: 1.25rem;
-  font-size: 0.875rem;
+  padding-block: clamp(0.25rem, 1vh, 0.375rem);
+  padding-inline: clamp(0.75rem, 3vw, 1.25rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   font-weight: 300;
   background-color: var(--el-color);
   color: var(--text-color);
@@ -530,24 +526,24 @@ select {
 .not-found-state {
   text-align: center;
   padding-block: clamp(2rem, 6vh, 4rem);
-  font-size: 1.125rem;
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
   opacity: 0.8;
 }
 
 .not-found-msg {
-  margin-block-start: 1rem;
+  margin-block-start: clamp(0.5rem, 2vh, 1rem);
 }
 
 .detail__borders-none {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
   opacity: 0.6;
-  margin-block-start: 0.375rem;
+  margin-block-start: clamp(0.25rem, 1vh, 0.375rem);
 }
 
 .grid-empty-state {
   grid-column: 1 / -1;
   text-align: center;
   padding-block: clamp(2rem, 6vh, 4rem);
-  font-size: 1.125rem;
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
   opacity: 0.7;
 }
