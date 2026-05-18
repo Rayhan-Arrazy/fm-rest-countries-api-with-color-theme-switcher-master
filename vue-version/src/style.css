@@ -31,6 +31,8 @@
   --box-shadow-hover: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.12);
   --hover-bg: rgba(0, 0, 0, 0.05);
   --flag-bg: rgba(0, 0, 0, 0.02);
+  --badge-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1);
+  --badge-shadow-hover: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
   --transition-speed: 0.3s;
 }
 
@@ -44,6 +46,8 @@
   --box-shadow-hover: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.4);
   --hover-bg: rgba(255, 255, 255, 0.05);
   --flag-bg: rgba(255, 255, 255, 0.02);
+  --badge-shadow: 0 0 0.375rem rgba(0, 0, 0, 0.4);
+  --badge-shadow-hover: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
 /* 2. CSS Reset (Modern Best Practices)
@@ -501,7 +505,7 @@ select {
   font-weight: 300;
   background-color: var(--el-color);
   color: var(--text-color);
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1);
+  box-shadow: var(--badge-shadow);
   border-radius: 0.25rem;
   cursor: pointer;
   text-decoration: none;
@@ -510,9 +514,5 @@ select {
 
 .border-badge:hover {
   transform: translateY(-0.125rem);
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] .border-badge {
-  box-shadow: 0 0 0.375rem rgba(0, 0, 0, 0.4);
+  box-shadow: var(--badge-shadow-hover);
 }
