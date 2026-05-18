@@ -28,6 +28,7 @@
 
   /* Shadow variables for standard cards and elements */
   --box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  --box-shadow-hover: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.12);
   --hover-bg: rgba(0, 0, 0, 0.05);
   --transition-speed: 0.3s;
 }
@@ -39,6 +40,7 @@
   --text-color: var(--color-white);
   --input-color: var(--color-white);
   --box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+  --box-shadow-hover: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.4);
   --hover-bg: rgba(255, 255, 255, 0.05);
 }
 
@@ -296,11 +298,7 @@ select {
 
 .card:hover {
   transform: translateY(-0.5rem);
-  box-shadow: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.12);
-}
-
-[data-theme="dark"] .card:hover {
-  box-shadow: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.4);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .card__flag-wrapper {

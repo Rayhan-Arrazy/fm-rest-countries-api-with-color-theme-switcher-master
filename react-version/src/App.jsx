@@ -141,6 +141,7 @@ function App() {
               <h1 className="header__title">Where in the world?</h1>
             </Link>
             <button
+              type="button"
               className="theme-toggle"
               onClick={toggleTheme}
               aria-label="Toggle dark mode"
