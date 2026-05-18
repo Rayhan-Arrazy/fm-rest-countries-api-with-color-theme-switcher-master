@@ -74,7 +74,7 @@ function HomeView({ countries }) {
       {/* Countries Cards Grid */}
       <div className="countries-grid">
         {filteredCountries.length === 0 ? (
-          <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '48px 0', fontSize: '18px', opacity: 0.7 }}>
+          <div className="grid-empty-state">
             No countries match your search criteria.
           </div>
         ) : (

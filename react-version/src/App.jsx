@@ -137,7 +137,7 @@ function App() {
         {/* Sticky Header */}
         <header className="header">
           <div className="container header__content">
-            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to="/" className="header__logo-link">
               <h1 className="header__title">Where in the world?</h1>
             </Link>
             <button
@@ -152,13 +152,13 @@ function App() {
         </header>
 
         {/* Main Content Router Views */}
-        <main className="container" style={{ padding: '40px 24px' }}>
+        <main className="container content-area">
           {loading ? (
-            <div style={{ textAlign: 'center', padding: '48px 0' }}>
+            <div className="loading-state">
               <p>Loading countries data...</p>
             </div>
           ) : error ? (
-            <div style={{ textAlign: 'center', padding: '48px 0', color: 'red' }}>
+            <div className="error-state">
               <p>{error}</p>
             </div>
           ) : (

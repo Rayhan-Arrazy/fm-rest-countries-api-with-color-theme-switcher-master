@@ -540,3 +540,42 @@ select {
   transform: translateY(-0.125rem);
   box-shadow: var(--badge-shadow-hover);
 }
+
+/* ==========================================================================
+   7. Helper Utilities (To prevent React runtime inline styles)
+   ========================================================================== */
+.header__logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.error-state {
+  text-align: center;
+  padding-block: 3rem;
+  color: #ef4444;
+}
+
+.not-found-state {
+  text-align: center;
+  padding-block: 3rem;
+  font-size: 1.125rem;
+  opacity: 0.8;
+}
+
+.not-found-msg {
+  margin-block-start: 1rem;
+}
+
+.detail__borders-none {
+  font-size: 1rem;
+  opacity: 0.6;
+  margin-block-start: 0.375rem;
+}
+
+.grid-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-block: 3rem;
+  font-size: 1.125rem;
+  opacity: 0.7;
+}

@@ -7,7 +7,7 @@ function DetailView({ countries }) {
   // Guard clause for initial load when countries data hasn't finished fetching yet
   if (!countries || countries.length === 0) {
     return (
-      <div style={{ textAlign: 'center', padding: '48px 0' }}>
+      <div className="loading-state">
         <p>Loading country details...</p>
       </div>
     );
@@ -22,9 +22,9 @@ function DetailView({ countries }) {
         <Link to="/" className="back-btn">
           <i className="fa-solid fa-arrow-left"></i> Back
         </Link>
-        <div style={{ textAlign: 'center', padding: '48px 0', fontSize: '18px', opacity: 0.8 }}>
+        <div className="not-found-state">
           <h2>Country not found ({code})</h2>
-          <p style={{ marginTop: '16px' }}>The country code might be invalid or does not exist in our database.</p>
+          <p className="not-found-msg">The country code might be invalid or does not exist in our database.</p>
         </div>
       </div>
     );
@@ -93,7 +93,7 @@ function DetailView({ countries }) {
                 ))}
               </ul>
             ) : (
-              <span style={{ fontSize: '16px', opacity: 0.6, marginTop: '6px' }}>None</span>
+              <span className="detail__borders-none">None</span>
             )}
           </div>
         </div>
