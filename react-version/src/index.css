@@ -218,7 +218,7 @@ select {
 .search-input {
   width: 100%;
   padding-block: clamp(0.75rem, 2vh, 1rem);
-  padding-inline: 1rem;
+  padding-inline: clamp(0.75rem, 2vw, 1rem);
   padding-inline-start: 4.625rem;
   font-size: 0.875rem;
   background: transparent;
