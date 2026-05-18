@@ -133,52 +133,50 @@ function App() {
 
   return (
     <Router>
-      <div className="app-wrapper">
-        {/* Sticky Header */}
-        <header className="header">
-          <div className="container header__content">
-            <Link to="/" className="header__logo-link">
-              <h1 className="header__title">Where in the world?</h1>
-            </Link>
-            <button
-              type="button"
-              className="theme-toggle"
-              onClick={toggleTheme}
-              aria-label="Toggle dark mode"
-            >
-              <i className={theme === 'dark' ? 'fa-solid fa-moon' : 'fa-regular fa-moon'}></i>
-              <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
-            </button>
+      {/* Sticky Header */}
+      <header className="header">
+        <div className="container header__content">
+          <Link to="/" className="header__logo-link">
+            <h1 className="header__title">Where in the world?</h1>
+          </Link>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+          >
+            <i className={theme === 'dark' ? 'fa-solid fa-moon' : 'fa-regular fa-moon'}></i>
+            <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Main Content Router Views */}
+      <main className="container content-area">
+        {loading ? (
+          <div className="loading-state">
+            <p>Loading countries data...</p>
           </div>
-        </header>
+        ) : error ? (
+          <div className="error-state">
+            <p>{error}</p>
+          </div>
+        ) : (
+          <Routes>
+            {/* Homepage List View Route */}
+            <Route
+              path="/"
+              element={<HomeView countries={countries} />}
+            />
 
-        {/* Main Content Router Views */}
-        <main className="container content-area">
-          {loading ? (
-            <div className="loading-state">
-              <p>Loading countries data...</p>
-            </div>
-          ) : error ? (
-            <div className="error-state">
-              <p>{error}</p>
-            </div>
-          ) : (
-            <Routes>
-              {/* Homepage List View Route */}
-              <Route
-                path="/"
-                element={<HomeView countries={countries} />}
-              />
-
-              {/* Detail Page Route */}
-              <Route
-                path="/country/:code"
-                element={<DetailView countries={countries} />}
-              />
-            </Routes>
-          )}
-        </main>
-      </div>
+            {/* Detail Page Route */}
+            <Route
+              path="/country/:code"
+              element={<DetailView countries={countries} />}
+            />
+          </Routes>
+        )}
+      </main>
     </Router>
   );
 }
