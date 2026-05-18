@@ -47,10 +47,10 @@ function DetailView({ countries }) {
       <div className="detail-container">
         {/* Flag Image Column */}
         <div className="detail__flag-wrapper">
-          <img 
-            className="detail__flag" 
-            src={country.flag} 
-            alt={`Flag of ${country.name}`} 
+          <img
+            className="detail__flag"
+            src={country.flag}
+            alt={`Flag of ${country.name}`}
           />
         </div>
 
@@ -83,8 +83,8 @@ function DetailView({ countries }) {
               <ul className="detail__borders-list">
                 {country.borders.map(borderCode => (
                   <li key={borderCode}>
-                    <Link 
-                      to={`/country/${borderCode}`} 
+                    <Link
+                      to={`/country/${borderCode}`}
                       className="border-badge"
                     >
                       {getCountryNameByCode(borderCode)}
