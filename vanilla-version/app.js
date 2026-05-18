@@ -130,8 +130,8 @@ async function fetchCountries() {
     } catch (fallbackError) {
       console.error('Failed to load local data as well:', fallbackError);
       contentContainer.innerHTML = `
-        <div style="text-align: center; padding: 48px 0;">
-          <p style="color: red; font-weight: bold; font-size: 18px;">Error loading countries data.</p>
+        <div class="error-state">
+          <p>Error loading countries data.</p>
           <p>Please check your internet connection or try again later.</p>
         </div>
       `;
@@ -242,7 +242,7 @@ function filterAndRenderCards() {
 
   if (filteredCountries.length === 0) {
     grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 48px 0; font-size: 18px; opacity: 0.7;">
+      <div class="grid-empty-state">
         No countries matches your search criteria.
       </div>
     `;
@@ -289,7 +289,7 @@ function renderDetailPage(countryCode) {
       <button class="back-btn" id="back-btn">
         <i class="fa-solid fa-arrow-left"></i> Back
       </button>
-      <div style="text-align: center; padding: 48px 0; font-size: 18px; opacity: 0.8;">
+      <div class="not-found-state">
         <h2>Country not found (${countryCode})</h2>
       </div>
     `;
@@ -351,7 +351,7 @@ function renderDetailPage(countryCode) {
               `).join('')}
             </ul>
           ` : `
-            <span style="font-size: 16px; opacity: 0.6; margin-top: 6px;">None</span>
+            <span class="detail__borders-none">None</span>
           `}
         </div>
       </div>

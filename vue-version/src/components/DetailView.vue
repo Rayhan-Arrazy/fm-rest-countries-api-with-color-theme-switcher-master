@@ -6,14 +6,14 @@
     </button>
 
     <!-- Guard: Loading State -->
-    <div v-if="!countries || countries.length === 0" style="text-align: center; padding: 48px 0;">
+    <div v-if="!countries || countries.length === 0" class="loading-state">
       <p>Loading country details...</p>
     </div>
 
     <!-- Guard: Country Not Found -->
-    <div v-else-if="!country" style="text-align: center; padding: 48px 0; font-size: 18px; opacity: 0.8;">
+    <div v-else-if="!country" class="not-found-state">
       <h2>Country not found ({{ route.params.code }})</h2>
-      <p style="margin-top: 16px;">The country code might be invalid or does not exist in our database.</p>
+      <p class="not-found-msg">The country code might be invalid or does not exist in our database.</p>
     </div>
 
     <!-- Country Details Grid Section -->
@@ -55,7 +55,7 @@
               </router-link>
             </li>
           </ul>
-          <span v-else style="font-size: 16px; opacity: 0.6; margin-top: 6px;">None</span>
+          <span v-else class="detail__borders-none">None</span>
         </div>
       </div>
     </div>

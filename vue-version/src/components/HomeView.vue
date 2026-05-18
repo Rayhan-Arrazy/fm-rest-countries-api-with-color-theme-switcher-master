@@ -41,7 +41,7 @@
     <div class="countries-grid">
       <div 
         v-if="filteredCountries.length === 0" 
-        style="grid-column: 1 / -1; text-align: center; padding: 48px 0; font-size: 18px; opacity: 0.7;"
+        class="grid-empty-state"
       >
         No countries match your search criteria.
       </div>
