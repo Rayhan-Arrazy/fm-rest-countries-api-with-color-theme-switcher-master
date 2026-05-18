@@ -1,0 +1,12 @@
+# Netlify Configuration File
+# Forces Netlify to compile the React version and serve the built dist/ bundle
+
+[build]
+  base = "react-version"
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
